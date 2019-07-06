@@ -3,13 +3,19 @@ import { CommonModule } from '@angular/common';
 import {EnsureModuleLoadedOnceGuard} from '../shared/EnsureModuleLoadedOnceGuard';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { LayoutComponent } from './components/layout/layout.component';
+import {RouterModule} from '@angular/router';
 
 
 
 @NgModule({
-  declarations: [HeaderComponent, FooterComponent],
+  declarations: [HeaderComponent, FooterComponent, LayoutComponent],
+  exports: [
+    LayoutComponent
+  ],
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule
   ]
 })
 export class CoreModule extends EnsureModuleLoadedOnceGuard { // Ensure that CoreModule is only loaded into AppModule
