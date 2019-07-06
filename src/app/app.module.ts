@@ -5,6 +5,8 @@ import { AppComponent } from './app.component';
 import {CoreModule} from './core/core.module';
 import {SharedModule} from './shared/shared.module';
 import {RouterModule} from '@angular/router';
+import {appRoutes} from './app.routes';
+import {ProfileModule} from './modules/profile/profile.module';
 
 @NgModule({
   declarations: [
@@ -14,7 +16,8 @@ import {RouterModule} from '@angular/router';
     BrowserModule,
     CoreModule,
     SharedModule,
-    RouterModule
+    RouterModule.forRoot(appRoutes),
+    ProfileModule
   ],
   providers: [],
   bootstrap: [AppComponent]
