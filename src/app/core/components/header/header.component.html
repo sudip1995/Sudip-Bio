@@ -1,1 +1,17 @@
-<p>header works!</p>
+<mat-toolbar>
+  <a [routerLink]="['/']">LOGO</a>
+
+  <span class="right-side-menus"></span>
+
+  <div class="container" fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="10px" fxLayoutAlign="center">
+    <a [routerLink]="['/home']">Home</a>
+    <a [routerLink]="['/about']">About</a>
+    <a [routerLink]="['/blog']">Blog</a>
+    <a [routerLink]="['/songs']">Songs</a>
+    <a [routerLink]="['/literature']">Literature</a>
+    <a [routerLink]="['/contact']">Contact</a>
+    <a [routerLink]="['/help']">Help</a>
+    <a [routerLink]="['/login']">Sign In</a>
+    <a [routerLink]="['/register']">Sign Up</a>
+  </div>
+</mat-toolbar>

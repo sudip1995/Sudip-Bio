@@ -5,7 +5,8 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { LayoutComponent } from './components/layout/layout.component';
 import {RouterModule} from '@angular/router';
-import {MatToolbarModule} from '@angular/material';
+import {MatSidenavModule, MatToolbarModule} from '@angular/material';
+import {FlexModule} from '@angular/flex-layout';
 
 
 
@@ -17,7 +18,9 @@ import {MatToolbarModule} from '@angular/material';
   imports: [
     CommonModule,
     RouterModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatSidenavModule,
+    FlexModule
   ]
 })
 export class CoreModule extends EnsureModuleLoadedOnceGuard { // Ensure that CoreModule is only loaded into AppModule

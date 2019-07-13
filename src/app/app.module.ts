@@ -7,6 +7,8 @@ import {SharedModule} from './shared/shared.module';
 import {RouterModule} from '@angular/router';
 import {appRoutes} from './app.routes';
 import {ProfileModule} from './modules/profile/profile.module';
+import {FlexLayoutModule} from '@angular/flex-layout';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -14,10 +16,12 @@ import {ProfileModule} from './modules/profile/profile.module';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     CoreModule,
     SharedModule,
     RouterModule.forRoot(appRoutes),
-    ProfileModule
+    ProfileModule,
+    FlexLayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent]
