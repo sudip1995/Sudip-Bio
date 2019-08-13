@@ -17,7 +17,7 @@ export class RegisterComponent implements OnInit {
       email: {},
       password: {},
       gender: {},
-      date: {}
+      dateOfBirth: {}
     };
   }
 
@@ -36,9 +36,8 @@ export class RegisterComponent implements OnInit {
     this.registrationForm = this.formBuilder.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
-      address: ['', Validators.required],
       gender: ['', Validators.required],
-      date: ['', Validators.required],
+      dateOfBirth: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required]
     });

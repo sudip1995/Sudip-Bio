@@ -14,11 +14,6 @@
           <mat-error *ngIf="registrationForm.controls['lastName'].errors?.required">Last Name is required.</mat-error>
         </mat-form-field>
         <mat-form-field>
-          <mat-label>Address</mat-label>
-          <input type="text" matInput formControlName="address" placeholder="Address" required>
-          <mat-error *ngIf="registrationForm.controls['address'].errors?.required">Address is required.</mat-error>
-        </mat-form-field>
-        <mat-form-field>
           <mat-label>Email</mat-label>
           <input type="email" matInput formControlName="email" placeholder="Email" required>
           <mat-error *ngIf="registrationForm.controls['email'].errors?.required">Email is required.</mat-error>
@@ -40,10 +35,10 @@
 
         <mat-form-field>
           <mat-label>Date of Birth</mat-label>
-          <input matInput [matDatepicker]="picker" formControlName="date" placeholder="Choose a date" required>
+          <input matInput [matDatepicker]="picker" formControlName="dateOfBirth" placeholder="Choose a date" required>
           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
-          <mat-error *ngIf="registrationForm.controls['date'].errors?.required">Date of Birth is required.</mat-error>
+          <mat-error *ngIf="registrationForm.controls['dateOfBirth'].errors?.required">Date of Birth is required.</mat-error>
         </mat-form-field>
       </form>
     </mat-card-content>
