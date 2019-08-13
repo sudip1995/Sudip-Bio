@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
 @Component({
   selector: 'app-blog',
@@ -8,15 +7,21 @@ import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 })
 export class BlogComponent implements OnInit {
 
-  editor = ClassicEditor;
-  config = {
-    placeholder: 'Type the content here!'
-  };
+  isWriting: boolean;
   data = '';
-
+  blogs: any[] = [];
   constructor() { }
 
   ngOnInit() {
+    this.isWriting = false;
   }
 
+  cancel() {
+    // ask user to save
+    this.isWriting = false;
+  }
+
+  post() {
+    // post blog to database
+  }
 }

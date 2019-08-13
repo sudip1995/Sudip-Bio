@@ -1,1 +1,16 @@
-<ckeditor [editor]="editor" [config]="config" [data]="data"></ckeditor>
+<div *ngIf="!isWriting">
+
+  <button mat-button (click)="isWriting=true">Write</button>
+  <span *ngIf="!blogs?.length">No Content Available</span>
+  <div *ngFor="let blog of blogs">
+    <p>blog</p>
+  </div>
+
+</div>
+<div *ngIf="isWriting">
+  <app-editor [data]="data"></app-editor>
+  <div fxLayout="row" fxLayoutAlign="space-between center">
+    <button mat-button (click)="cancel()">Cancel</button>
+    <button mat-button (click)="post()">Post</button>
+  </div>
+</div>

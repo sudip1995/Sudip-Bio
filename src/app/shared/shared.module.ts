@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {ReactiveFormsModule} from '@angular/forms';
 import {
+  MatButtonModule,
   MatCardModule,
   MatDatepickerModule,
   MatFormFieldModule,
@@ -12,13 +13,15 @@ import {
 } from '@angular/material';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {CKEditorModule} from '@ckeditor/ckeditor5-angular';
+import { EditorComponent } from './editor/editor.component';
 
 
 
 @NgModule({
-  declarations: [],
+  declarations: [EditorComponent],
   imports: [
-    CommonModule
+    CommonModule,
+    CKEditorModule
   ],
   exports: [
     CommonModule,
@@ -31,7 +34,8 @@ import {CKEditorModule} from '@ckeditor/ckeditor5-angular';
     MatRadioModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    CKEditorModule
+    MatButtonModule,
+    EditorComponent
   ]
 })
 export class SharedModule { }

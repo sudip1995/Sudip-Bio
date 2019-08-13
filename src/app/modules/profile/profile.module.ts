@@ -11,9 +11,6 @@ import { HelpComponent } from './components/help/help.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import {SharedModule} from '../../shared/shared.module';
-import {FlexLayoutModule} from '@angular/flex-layout';
-
-
 
 @NgModule({
   declarations: [
