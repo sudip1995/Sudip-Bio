@@ -11,6 +11,7 @@ import {
   MatToolbarModule
 } from '@angular/material';
 import {FlexLayoutModule} from '@angular/flex-layout';
+import {CKEditorModule} from '@ckeditor/ckeditor5-angular';
 
 
 
@@ -29,7 +30,8 @@ import {FlexLayoutModule} from '@angular/flex-layout';
     MatFormFieldModule,
     MatRadioModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    CKEditorModule
   ]
 })
 export class SharedModule { }
