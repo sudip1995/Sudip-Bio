@@ -14,14 +14,21 @@ import {
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {CKEditorModule} from '@ckeditor/ckeditor5-angular';
 import { EditorComponent } from './editor/editor.component';
+import {SanitizeHtmlPipe} from './pipes/sanitize-Html';
 
 
 
 @NgModule({
-  declarations: [EditorComponent],
+  declarations: [
+    EditorComponent,
+    SanitizeHtmlPipe
+  ],
   imports: [
     CommonModule,
-    CKEditorModule
+    CKEditorModule,
+    ReactiveFormsModule,
+    MatInputModule,
+    MatFormFieldModule
   ],
   exports: [
     CommonModule,
@@ -35,7 +42,8 @@ import { EditorComponent } from './editor/editor.component';
     MatDatepickerModule,
     MatNativeDateModule,
     MatButtonModule,
-    EditorComponent
+    EditorComponent,
+    SanitizeHtmlPipe
   ]
 })
 export class SharedModule { }

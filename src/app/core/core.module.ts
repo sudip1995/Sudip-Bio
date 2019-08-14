@@ -7,20 +7,23 @@ import { LayoutComponent } from './components/layout/layout.component';
 import {RouterModule} from '@angular/router';
 import {MatSidenavModule, MatToolbarModule} from '@angular/material';
 import {FlexModule} from '@angular/flex-layout';
+import {HttpClientModule} from '@angular/common/http';
 
 
 
 @NgModule({
   declarations: [HeaderComponent, FooterComponent, LayoutComponent],
   exports: [
-    LayoutComponent
+    LayoutComponent,
+    HttpClientModule
   ],
   imports: [
     CommonModule,
     RouterModule,
     MatToolbarModule,
     MatSidenavModule,
-    FlexModule
+    FlexModule,
+    HttpClientModule
   ]
 })
 export class CoreModule extends EnsureModuleLoadedOnceGuard { // Ensure that CoreModule is only loaded into AppModule

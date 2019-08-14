@@ -3,12 +3,12 @@
   <button mat-button (click)="isWriting=true">Write</button>
   <span *ngIf="!blogs?.length">No Content Available</span>
   <div *ngFor="let blog of blogs">
-    <p>blog</p>
+    <h1>{{blog.title}}</h1>
+    <div [innerHTML]="blog.body | sanitizeHtml"></div>
   </div>
-
 </div>
 <div *ngIf="isWriting">
-  <app-editor [data]="data"></app-editor>
+  <app-editor [data]="data" (dataEmitted)="save($event)"></app-editor>
   <div fxLayout="row" fxLayoutAlign="space-between center">
     <button mat-button (click)="cancel()">Cancel</button>
     <button mat-button (click)="post()">Post</button>
