@@ -1,0 +1,28 @@
+<div class="container body-padding">
+    <h1 id="page-title">Contact</h1>
+      <form [formGroup]="contactForm" style="padding-top: 30px">
+        <div class="row">
+          <div class="col-md-6">
+            <div fxLayout="column" fxFlex="1 0 auto">
+              <mat-form-field appearance="outline">
+                <input type="text" matInput formControlName="name" placeholder="Name" required>
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                <input type="email" matInput formControlName="email" placeholder="Email" required>
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                <input type="text" matInput formControlName="subject" placeholder="Subject" required>
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <mat-form-field appearance="outline">
+              <textarea rows="11" type="text" matInput formControlName="message" placeholder="Message" style="resize: none" required></textarea>
+            </mat-form-field>
+          </div>
+        </div>
+      </form>
+  <div class="text-right">
+    <button type="button" class="btn btn-primary" [disabled]="contactForm.invalid" (click)="sendMessage()" color="primary">Send Message</button>
+  </div>
+</div>
