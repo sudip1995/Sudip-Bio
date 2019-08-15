@@ -1,17 +1,23 @@
-<mat-toolbar>
-  <a [routerLink]="['/']">LOGO</a>
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+  <div class="container">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" (click)="openMenu()">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <!-- lOGO -->
+    <a [routerLink]="['/']" class="navbar-brand">SS</a>
 
-  <span class="right-side-menus"></span>
-
-  <div class="container" fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="10px" fxLayoutAlign="center">
-    <a [routerLink]="['/home']">Home</a>
-    <a [routerLink]="['/about']">About</a>
-    <a [routerLink]="['/blog']">Blog</a>
-    <a [routerLink]="['/songs']">Songs</a>
-    <a [routerLink]="['/literature']">Literature</a>
-    <a [routerLink]="['/contact']">Contact</a>
-    <a [routerLink]="['/help']">Help</a>
-    <a [routerLink]="['/login']">Sign In</a>
-    <a [routerLink]="['/register']">Sign Up</a>
+    <div class="collapse navbar-collapse" [ngClass]="{'show': navbarOpen}">
+      <ul class="nav navbar-nav ml-auto">
+        <li class="nav-link" routerLinkActive="active"><a [routerLink]="['/home']">Home</a></li>
+        <li class="nav-link" routerLinkActive="active"><a [routerLink]="['/about']">About</a></li>
+        <li class="nav-link" routerLinkActive="active"><a [routerLink]="['/blog']">Blog</a></li>
+        <li class="nav-link" routerLinkActive="active"><a [routerLink]="['/songs']">Songs</a></li>
+        <li class="nav-link" routerLinkActive="active"><a [routerLink]="['/literature']">Literature</a></li>
+        <li class="nav-link" routerLinkActive="active"><a [routerLink]="['/contact']">Contact</a></li>
+        <li class="nav-link" routerLinkActive="active"><a [routerLink]="['/help']">Help</a></li>
+        <li class="nav-link" routerLinkActive="active"><a [routerLink]="['/login']">Sign In</a></li>
+        <li class="nav-link" routerLinkActive="active"><a [routerLink]="['/register']">Sign Up</a></li>
+      </ul>
+    </div>
   </div>
-</mat-toolbar>
+</nav>
