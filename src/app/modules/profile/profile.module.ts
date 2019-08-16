@@ -7,7 +7,6 @@ import { BlogComponent } from './components/blog/blog.component';
 import { SongsComponent } from './components/songs/songs.component';
 import { LiteratureComponent } from './components/literature/literature.component';
 import { ContactComponent } from './components/contact/contact.component';
-import { HelpComponent } from './components/help/help.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import {SharedModule} from '../../shared/shared.module';
@@ -20,7 +19,6 @@ import {SharedModule} from '../../shared/shared.module';
     SongsComponent,
     LiteratureComponent,
     ContactComponent,
-    HelpComponent,
     LoginComponent,
     RegisterComponent],
   imports: [
