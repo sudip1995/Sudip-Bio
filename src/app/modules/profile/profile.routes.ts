@@ -7,6 +7,7 @@ import {LiteratureComponent} from './components/literature/literature.component'
 import {ContactComponent} from './components/contact/contact.component';
 import {LoginComponent} from './components/login/login.component';
 import {RegisterComponent} from './components/register/register.component';
+import {AuthGuard} from '../../core/auth.guard';
 
 export const profileRoutes: Routes = [
   {
@@ -19,15 +20,18 @@ export const profileRoutes: Routes = [
   },
   {
     path: 'blog',
-    component: BlogComponent
+    component: BlogComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'songs',
-    component: SongsComponent
+    component: SongsComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'literature',
-    component: LiteratureComponent
+    component: LiteratureComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'contact',
