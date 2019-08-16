@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from '@angular/router';
+import {UserService} from '../../../modules/profile/services/user.service';
+import {AuthService} from '../services/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -6,10 +9,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-
   navbarOpen: boolean;
 
-  constructor() { }
+  constructor(private router: Router,
+              public authService: AuthService) { }
 
   ngOnInit() {
   }
@@ -18,4 +21,7 @@ export class HeaderComponent implements OnInit {
     this.navbarOpen = !this.navbarOpen;
   }
 
+  logout() {
+    localStorage.clear();
+  }
 }

@@ -8,6 +8,8 @@ import {RouterModule} from '@angular/router';
 import {MatSidenavModule, MatToolbarModule} from '@angular/material';
 import {FlexModule} from '@angular/flex-layout';
 import {HttpClientModule} from '@angular/common/http';
+import {AuthService} from './components/services/auth.service';
+import {AuthGuard} from './auth.guard';
 
 
 
@@ -24,7 +26,8 @@ import {HttpClientModule} from '@angular/common/http';
     MatSidenavModule,
     FlexModule,
     HttpClientModule
-  ]
+  ],
+  providers: [AuthService, AuthGuard]
 })
 export class CoreModule extends EnsureModuleLoadedOnceGuard { // Ensure that CoreModule is only loaded into AppModule
 
