@@ -9,6 +9,7 @@ import {
   MatInputModule,
   MatNativeDateModule,
   MatRadioModule,
+  MatSnackBarModule,
   MatToolbarModule
 } from '@angular/material';
 import {FlexLayoutModule} from '@angular/flex-layout';
@@ -43,6 +44,7 @@ import {OembedPipe} from './pipes/oembed.pipe';
     MatDatepickerModule,
     MatNativeDateModule,
     MatButtonModule,
+    MatSnackBarModule,
 
     // Components
     EditorComponent,

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {MailService} from '../../services/mail.service';
+import {MatSnackBar} from '@angular/material';
 
 @Component({
   selector: 'app-contact',
@@ -10,7 +12,9 @@ export class ContactComponent implements OnInit {
 
   contactForm: FormGroup;
   contactFormErrors: any;
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(private formBuilder: FormBuilder,
+              private mailService: MailService,
+              private snackBar: MatSnackBar) {}
 
   ngOnInit() {
     this.createContactForm();
@@ -26,7 +30,15 @@ export class ContactComponent implements OnInit {
   }
 
   sendMessage() {
-
+    this.mailService.sendMail(this.contactForm.value).subscribe(res => {
+      console.log(res);
+      if (res && res.success) {
+        this.snackBar.open('Message Sent!', 'Dismiss',  {
+          duration: 2000
+        });
+        this.contactForm.reset();
+      }
+    });
   }
 }
 
