@@ -1,8 +1,10 @@
 // @dynamic
+import {environment} from '../../../../environments/environment';
+
 export class ProfileConfig {
 
   static get rootApi(): string {
-    return 'http://localhost:8626';
+    return environment.sudip_bio_api;
   }
 
   static get getAllBlogsApi(): string {
