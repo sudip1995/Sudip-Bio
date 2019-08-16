@@ -14,4 +14,12 @@ export class ProfileConfig {
   static get postBlogApi(): string {
     return `${ProfileConfig.rootApi}/blog/write`;
   }
+
+  static get authenticateUserApi(): string {
+    return `${ProfileConfig.rootApi}/user/authenticate`;
+  }
+
+  static get registerUserApi(): string {
+    return `${ProfileConfig.rootApi}/user/register`;
+  }
 }

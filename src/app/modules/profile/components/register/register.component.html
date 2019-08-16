@@ -1,8 +1,8 @@
-<div fxLayout="column" fxLayoutAlign="center">
-  <mat-card class="mat-card">
-    <mat-card-title>Registration</mat-card-title>
-    <mat-card-content>
-      <form fxLayout="column" fxFlex="1 0 auto" [formGroup]="registrationForm">
+<div class="container body-padding">
+  <h1 id="page-title">Registration</h1>
+  <form [formGroup]="registrationForm" style="padding-top: 50px">
+    <div class="row">
+      <div fxLayout="column" fxFlex="1 0 auto">
         <mat-form-field>
           <mat-label>First Name</mat-label>
           <input type="text" matInput formControlName="firstName" placeholder="First Name" required>
@@ -17,7 +17,7 @@
           <mat-label>Email</mat-label>
           <input type="email" matInput formControlName="email" placeholder="Email" required>
           <mat-error *ngIf="registrationForm.controls['email'].errors?.required">Email is required.</mat-error>
-          <mat-error *ngIf="registrationForm.controls['email'].errors?.email">Email is invalid.</mat-error>
+          <mat-error *ngIf="registrationForm.controls['email'].errors?.pattern">Email is invalid.</mat-error>
         </mat-form-field>
         <mat-form-field>
           <mat-label>Password</mat-label>
@@ -25,11 +25,11 @@
           <mat-error *ngIf="registrationForm.controls['password'].errors?.required">Password is required.</mat-error>
         </mat-form-field>
         <section>
-          <mat-label>Gender:</mat-label>
+          <p>Gender:</p>
           <mat-radio-group formControlName="gender" required>
-            <mat-radio-button class="radio-button-margin">Male</mat-radio-button>
-            <mat-radio-button class="radio-button-margin">Female</mat-radio-button>
-            <mat-radio-button class="radio-button-margin">Other</mat-radio-button>
+            <mat-radio-button class="radio-button-margin" value="male">Male</mat-radio-button>
+            <mat-radio-button class="radio-button-margin" value="female">Female</mat-radio-button>
+            <mat-radio-button class="radio-button-margin" value="other">Other</mat-radio-button>
           </mat-radio-group>
         </section>
 
@@ -40,10 +40,11 @@
           <mat-datepicker #picker></mat-datepicker>
           <mat-error *ngIf="registrationForm.controls['dateOfBirth'].errors?.required">Date of Birth is required.</mat-error>
         </mat-form-field>
-      </form>
-    </mat-card-content>
-    <mat-card-actions  align="center">
-      <button mat-raised-button [disabled]="registrationForm.invalid" (click)="register()" color="primary">REGISTER</button>
-    </mat-card-actions>
-  </mat-card>
+      </div>
+    </div>
+  </form>
+  <div class="text-center">
+    <button type="button" class="btn btn-primary" [disabled]="registrationForm.invalid" (click)="register()">Register</button>
+  </div>
 </div>
+
