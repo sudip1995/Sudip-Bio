@@ -2,7 +2,11 @@
   <h1 id="page-title">Registration</h1>
   <form [formGroup]="registrationForm" style="padding-top: 50px">
     <div class="row">
+      <div class="col-lg-3"></div>
       <div fxLayout="column" fxFlex="1 0 auto">
+        <div *ngIf="showAlert" class="alert alert-danger" role="alert" style="margin-bottom: 40px">
+          User couldn't be registered! Please try again!
+        </div>
         <mat-form-field>
           <mat-label>First Name</mat-label>
           <input type="text" matInput formControlName="firstName" placeholder="First Name" required>
@@ -41,6 +45,7 @@
           <mat-error *ngIf="registrationForm.controls['dateOfBirth'].errors?.required">Date of Birth is required.</mat-error>
         </mat-form-field>
       </div>
+      <div class="col-lg-3"></div>
     </div>
   </form>
   <div class="text-center">

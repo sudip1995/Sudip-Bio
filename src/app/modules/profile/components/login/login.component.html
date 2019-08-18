@@ -4,6 +4,9 @@
     <div class="row">
       <div class="col-lg-4"></div>
       <div fxLayout="column" fxFlex="1 0 auto">
+        <div *ngIf="showAlert" class="alert alert-danger" role="alert" style="margin-bottom: 40px">
+          Wrong Email or Password!
+        </div>
         <mat-form-field>
           <input type="email" matInput formControlName="email" placeholder="Email" required>
           <mat-error *ngIf="loginForm.controls['email'].errors?.required">Email is required.</mat-error>

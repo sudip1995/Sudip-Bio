@@ -12,6 +12,7 @@ export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
   loginFormErrors: any;
+  showAlert: boolean;
   constructor(private formBuilder: FormBuilder,
               private userService: UserService,
               private router: Router) {
@@ -38,9 +39,11 @@ export class LoginComponent implements OnInit {
   login() {
     this.userService.authenticateUser(this.loginForm.value).subscribe(res => {
       if (res && res.success) {
+        this.showAlert = false;
         this.userService.storeUserData(res.token, res.user);
         this.router.navigateByUrl('/home');
       } else {
+        this.showAlert = true;
         this.router.navigateByUrl('/login');
       }
     });

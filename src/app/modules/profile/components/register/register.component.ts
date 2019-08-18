@@ -12,6 +12,7 @@ import {UserService} from '../../services/user.service';
 export class RegisterComponent implements OnInit {
   registrationForm: FormGroup;
   registrationFormErrors: any;
+  showAlert: boolean;
   constructor(private formBuilder: FormBuilder,
               private userService: UserService,
               private router: Router) {
@@ -41,9 +42,11 @@ export class RegisterComponent implements OnInit {
     user.gender = this.registrationForm.get('gender').value;
     user.dateOfBirth = this.registrationForm.get('dateOfBirth').value;
     this.userService.registerUser(user).subscribe(res => {
-      if (res) {
+      if (res && res.success) {
+        this.showAlert = false;
         this.router.navigateByUrl('/login');
       } else {
+        this.showAlert = true;
         this.router.navigateByUrl('/register');
       }
     });

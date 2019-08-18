@@ -15,8 +15,8 @@ export class UserService {
     return this.httpClient.post<any>(ProfileConfig.authenticateUserApi, user);
   }
 
-  registerUser(user: UserModel): Observable<UserModel> {
-    return this.httpClient.post<UserModel>(ProfileConfig.registerUserApi, user);
+  registerUser(user: UserModel): Observable<any> {
+    return this.httpClient.post<any>(ProfileConfig.registerUserApi, user);
   }
 
   storeUserData(token, user) {
