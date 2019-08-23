@@ -37,6 +37,10 @@ export class ContactComponent implements OnInit {
           duration: 2000
         });
         this.contactForm.reset();
+      } else {
+        this.snackBar.open('Message couldn\`t be sent!', 'Dismiss',  {
+          duration: 2000
+        });
       }
     });
   }
