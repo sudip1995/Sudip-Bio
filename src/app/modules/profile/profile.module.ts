@@ -10,6 +10,7 @@ import { ContactComponent } from './components/contact/contact.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import {SharedModule} from '../../shared/shared.module';
+import {CookieService} from 'ngx-cookie-service';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import {SharedModule} from '../../shared/shared.module';
   imports: [
     SharedModule,
     RouterModule.forChild(profileRoutes)
-  ]
+  ],
+  providers: [CookieService]
 })
 export class ProfileModule { }

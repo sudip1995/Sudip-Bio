@@ -27,7 +27,7 @@ import {AuthGuard} from './auth.guard';
     FlexModule,
     HttpClientModule
   ],
-  providers: [AuthService, AuthGuard]
+  providers: []
 })
 export class CoreModule extends EnsureModuleLoadedOnceGuard { // Ensure that CoreModule is only loaded into AppModule
 
