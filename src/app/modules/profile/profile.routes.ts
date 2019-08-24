@@ -25,8 +25,7 @@ export const profileRoutes: Routes = [
   },
   {
     path: 'songs',
-    component: SongsComponent,
-    canActivate: [AuthGuard]
+    component: SongsComponent
   },
   {
     path: 'literature',
