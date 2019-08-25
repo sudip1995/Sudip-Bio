@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {ProfileConfig} from '../../config/profile.config';
-import {BlogModel} from '../../models/profile.model';
-import {BlogService} from '../../services/blog.service';
+import {ContentService} from '../../../../shared/services/content.service';
+import {ContentModel} from '../../../../shared/models/shared.model';
+import {SharedConfig} from '../../../../shared/config/shared.config';
 
 @Component({
   selector: 'app-blog',
@@ -13,18 +14,22 @@ export class BlogComponent implements OnInit {
   isWriting: boolean;
   data = '';
   blogs: any[] = [];
-  blog: BlogModel = new BlogModel();
-  constructor(private blogService: BlogService) { }
+  blog: ContentModel = new ContentModel();
+  lastShownBlog: number;
+  constructor(private contentService: ContentService) { }
 
   ngOnInit() {
+    this.lastShownBlog = 4;
     this.isWriting = false;
-    this.blogService.getAllBlogPosts(ProfileConfig.getAllBlogsApi).subscribe(res => {
+    this.contentService.getAllContent(SharedConfig.getAllContentApi('blog')).subscribe(res => {
       res.forEach(r => {
-        const newBlog = new BlogModel();
+        const newBlog = new ContentModel();
+        newBlog._id = r._id;
         newBlog.title = r.title;
         newBlog.body = r.body;
         newBlog.author = r.author;
-        newBlog.date = r.date;
+        newBlog.contentType = r.contentType;
+        newBlog.publishedDate = r.publishedDate;
         newBlog.comments = r.comments;
         newBlog.isFavourite = r.isFavourite;
         newBlog.isPosted = r.isPosted;
@@ -34,31 +39,24 @@ export class BlogComponent implements OnInit {
     });
   }
 
-  cancel() {
-    // ask user to save
-    this.isWriting = false;
-  }
-
-  save(event) {
-    // save data as draft
-    this.blog.title = event.title;
-    this.blog.body = event.body;
-  }
-
-  post() {
-    // post blog to database
-    this.blogService.saveBlogPost(ProfileConfig.postBlogApi, this.blog).subscribe(res => {
-      this.isWriting = false;
-      const newBlog = new BlogModel();
+  openBlog(blogId: string) {
+    this.contentService.getContentById(SharedConfig.getContentByIdApi(blogId)).subscribe(res => {
+      const newBlog = new ContentModel();
+      newBlog._id = res._id;
       newBlog.title = res.title;
       newBlog.body = res.body;
       newBlog.author = res.author;
-      newBlog.date = res.date;
+      newBlog.contentType = res.contentType;
+      newBlog.publishedDate = res.publishedDate;
       newBlog.comments = res.comments;
       newBlog.isFavourite = res.isFavourite;
       newBlog.isPosted = res.isPosted;
       newBlog.meta = res.meta;
       this.blogs.push(newBlog);
-    });
+      });
+  }
+
+  olderPosts() {
+    this.lastShownBlog += 5;
   }
 }

@@ -1,0 +1,28 @@
+<div class="container body-padding">
+  <form [formGroup]="textEditorForm">
+    <mat-form-field>
+      <input type="text" matInput formControlName="title" placeholder="TITLE" required>
+    </mat-form-field>
+    <mat-form-field>
+      <input type="text" matInput formControlName="subject" placeholder="SUBJECT">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Published Date</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="publishedDate" placeholder="Choose a date">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Content Type</mat-label>
+      <mat-select formControlName="contentType">
+        <mat-option *ngFor="let contentType of contentTypes" [value]="contentType">
+          {{contentType | titlecase}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <ckeditor [editor]="editor" [config]="config" formControlName="body"></ckeditor>
+  </form>
+  <div class="text-right" style="margin: 20px">
+    <button type="button" class="btn btn-success" [disabled]="textEditorForm.invalid" (click)="post()">SAVE</button>
+  </div>
+</div>

@@ -8,13 +8,13 @@ import {
   MatFormFieldModule,
   MatInputModule,
   MatNativeDateModule,
-  MatRadioModule,
+  MatRadioModule, MatSelectModule,
   MatSnackBarModule,
   MatToolbarModule
 } from '@angular/material';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {CKEditorModule} from '@ckeditor/ckeditor5-angular';
-import { EditorComponent } from './editor/editor.component';
+import { EditorComponent } from './components/editor/editor.component';
 import {SanitizeHtmlPipe} from './pipes/sanitize-Html';
 import {OembedPipe} from './pipes/oembed.pipe';
 
@@ -30,7 +30,9 @@ import {OembedPipe} from './pipes/oembed.pipe';
     CKEditorModule,
     ReactiveFormsModule,
     MatInputModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatDatepickerModule,
+    MatSelectModule
   ],
   exports: [
     CommonModule,
@@ -45,6 +47,7 @@ import {OembedPipe} from './pipes/oembed.pipe';
     MatNativeDateModule,
     MatButtonModule,
     MatSnackBarModule,
+    MatSelectModule,
 
     // Components
     EditorComponent,

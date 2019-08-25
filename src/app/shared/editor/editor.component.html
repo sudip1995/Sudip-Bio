@@ -1,6 +1,0 @@
-<form [formGroup]="textEditorForm">
-  <mat-form-field>
-    <input type="title" matInput formControlName="title" placeholder="TITLE" [value]="data?.title ? data.title : ''" required>
-  </mat-form-field>
-  <ckeditor [editor]="editor" [config]="config" [data]="data?.body" formControlName="body"></ckeditor>
-</form>

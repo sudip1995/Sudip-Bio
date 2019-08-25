@@ -1,16 +1,32 @@
-<div *ngIf="!isWriting">
+<div class="container body-padding">
+  <h1 id="page-title">Programming Blog</h1>
+  <div class="row">
+    <div class="col-lg-8 col-md-10 mx-auto">
+      <h4 *ngIf="!blogs?.length">No Content Available</h4>
+      <div *ngFor="let blog of blogs; let i=index;">
+        <div *ngIf="i <= lastShownBlog" class="post-preview">
+          <a (click)="openBlog(blog?._id)">
+            <h2 class="post-title">
+              {{blog?.title}}
+            </h2>
+          </a>
+            <p [innerHTML]="(blog?.body?.length >= 250 ? blog?.body?.substr(0, 250) + '...' : blog?.body) | oembed | sanitizeHtml"></p>
+          <p class="post-meta">Posted by {{blog?.author}} on {{blog?.date | date}}</p>
+        </div>
+        <hr>
+      </div>
+      <div *ngIf="lastShownBlog < blogs?.length-1" class="clearfix">
+        <button class="btn btn-primary float-right" (click)="olderPosts()">Older Posts &rarr;</button>
+      </div>
+    </div>
+  </div>
+</div>
 
-  <button mat-button (click)="isWriting=true">Write</button>
-  <span *ngIf="!blogs?.length">No Content Available</span>
-  <div *ngFor="let blog of blogs">
-    <h1>{{blog.title}}</h1>
-    <div [innerHTML]="blog.body | oembed | sanitizeHtml"></div>
+<!-- Main Content -->
+<div class="container">
+  <div class="row">
+
+      <!-- Pager -->
   </div>
 </div>
-<div *ngIf="isWriting">
-  <app-editor [data]="data" (dataEmitted)="save($event)"></app-editor>
-  <div fxLayout="row" fxLayoutAlign="space-between center">
-    <button mat-button (click)="cancel()">Cancel</button>
-    <button mat-button (click)="post()">Post</button>
-  </div>
-</div>
+
