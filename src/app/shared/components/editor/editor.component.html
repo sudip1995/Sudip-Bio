@@ -20,7 +20,7 @@
         </mat-option>
       </mat-select>
     </mat-form-field>
-    <ckeditor [editor]="editor" [config]="config" formControlName="body"></ckeditor>
+    <ckeditor [editor]="editor" [config]="config" (ready)="onReady($event)" formControlName="body"></ckeditor>
   </form>
   <div class="text-right" style="margin: 20px">
     <button type="button" class="btn btn-success" [disabled]="textEditorForm.invalid" (click)="post()">SAVE</button>

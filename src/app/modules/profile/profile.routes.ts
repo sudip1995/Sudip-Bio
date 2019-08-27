@@ -8,6 +8,7 @@ import {ContactComponent} from './components/contact/contact.component';
 import {LoginComponent} from './components/login/login.component';
 import {RegisterComponent} from './components/register/register.component';
 import {AuthGuard} from '../../core/auth.guard';
+import {ContentComponent} from './components/content/content.component';
 
 export const profileRoutes: Routes = [
   {
@@ -43,5 +44,9 @@ export const profileRoutes: Routes = [
   {
     path: 'register',
     component: RegisterComponent
+  },
+  {
+    path: 'blog/:id',
+    component: ContentComponent
   }
 ];

@@ -11,6 +11,7 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import {SharedModule} from '../../shared/shared.module';
 import {CookieService} from 'ngx-cookie-service';
+import { ContentComponent } from './components/content/content.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import {CookieService} from 'ngx-cookie-service';
     LiteratureComponent,
     ContactComponent,
     LoginComponent,
-    RegisterComponent],
+    RegisterComponent,
+    ContentComponent],
   imports: [
     SharedModule,
     RouterModule.forChild(profileRoutes)

@@ -5,7 +5,7 @@
       <h4 *ngIf="!blogs?.length">No Content Available</h4>
       <div *ngFor="let blog of blogs; let i=index;">
         <div *ngIf="i <= lastShownBlog" class="post-preview">
-          <a (click)="openBlog(blog?._id)">
+          <a (click)="contentService.openContentById(blog?._id)">
             <h2 class="post-title">
               {{blog?.title}}
             </h2>

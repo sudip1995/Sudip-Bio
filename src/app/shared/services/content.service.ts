@@ -3,6 +3,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {AuthService} from '../../core/components/services/auth.service';
 import {ContentModel} from '../models/shared.model';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,9 @@ import {ContentModel} from '../models/shared.model';
 export class ContentService {
 
   constructor(private httpClient: HttpClient,
-              private authService: AuthService) {}
+              private authService: AuthService,
+              private router: Router,
+              private activatedRoute: ActivatedRoute) {}
 
   getAllContent(url): Observable<ContentModel[]> {
     let headers: HttpHeaders = new HttpHeaders();
@@ -31,5 +34,9 @@ export class ContentService {
     const authToken = this.authService.loadToken();
     headers = headers.append('Authorization', authToken);
     return this.httpClient.post<ContentModel>(url, data, {headers});
+  }
+
+  openContentById(id: string) {
+    this.router.navigate([id], {relativeTo: this.activatedRoute.firstChild});
   }
 }

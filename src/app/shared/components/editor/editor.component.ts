@@ -1,13 +1,12 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-
-import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import * as DecoupledEditor from '@ckeditor/ckeditor5-build-decoupled-document';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
-import {ProfileConfig} from '../../../modules/profile/config/profile.config';
 import {ContentModel} from '../../models/shared.model';
 import {ContentService} from '../../services/content.service';
 import {SharedConfig} from '../../config/shared.config';
+
 
 @Component({
   selector: 'app-editor',
@@ -16,7 +15,7 @@ import {SharedConfig} from '../../config/shared.config';
 })
 export class EditorComponent implements OnInit, OnDestroy {
 
-  editor = ClassicEditor;
+  editor = DecoupledEditor;
   config = {
     placeholder: 'Type the content here!'
   };
@@ -35,6 +34,13 @@ export class EditorComponent implements OnInit, OnDestroy {
     this.textEditorForm.valueChanges.pipe(takeUntil(this.unSubscribe$)).subscribe(() => {
       this.onFormValuesChanged();
     });
+  }
+
+  public onReady( editor ) {
+    editor.ui.getEditableElement().parentElement.insertBefore(
+      editor.ui.view.toolbar.element,
+      editor.ui.getEditableElement()
+    );
   }
 
   private createTextEditorForm() {

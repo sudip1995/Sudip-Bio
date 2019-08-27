@@ -16,7 +16,7 @@ export class BlogComponent implements OnInit {
   blogs: any[] = [];
   blog: ContentModel = new ContentModel();
   lastShownBlog: number;
-  constructor(private contentService: ContentService) { }
+  constructor(public contentService: ContentService) { }
 
   ngOnInit() {
     this.lastShownBlog = 4;
@@ -37,23 +37,6 @@ export class BlogComponent implements OnInit {
         this.blogs.push(newBlog);
       });
     });
-  }
-
-  openBlog(blogId: string) {
-    this.contentService.getContentById(SharedConfig.getContentByIdApi(blogId)).subscribe(res => {
-      const newBlog = new ContentModel();
-      newBlog._id = res._id;
-      newBlog.title = res.title;
-      newBlog.body = res.body;
-      newBlog.author = res.author;
-      newBlog.contentType = res.contentType;
-      newBlog.publishedDate = res.publishedDate;
-      newBlog.comments = res.comments;
-      newBlog.isFavourite = res.isFavourite;
-      newBlog.isPosted = res.isPosted;
-      newBlog.meta = res.meta;
-      this.blogs.push(newBlog);
-      });
   }
 
   olderPosts() {
