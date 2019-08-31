@@ -12,13 +12,15 @@ import {Subject} from 'rxjs';
   styleUrls: ['./content.component.scss']
 })
 export class ContentComponent implements OnInit, OnDestroy {
+  isDataLoading: boolean;
+  newContent = new ContentModel();
 
   unSubscribe$ = new Subject();
-  newContent = new ContentModel();
   constructor(private contentService: ContentService,
               private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
+    this.isDataLoading = true;
     this.activatedRoute.params.pipe(takeUntil(this.unSubscribe$)).subscribe(param => {
       if (param && param.id) {
         this.contentService.getContentById(SharedConfig.getContentByIdApi(param.id)).subscribe(res => {
@@ -34,6 +36,7 @@ export class ContentComponent implements OnInit, OnDestroy {
             this.newContent.isPosted = res.isPosted;
             this.newContent.meta = res.meta;
           }
+          this.isDataLoading = false;
         });
       }
     });

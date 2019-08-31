@@ -48,5 +48,9 @@ export const profileRoutes: Routes = [
   {
     path: 'blog/:id',
     component: ContentComponent
+  },
+  {
+    path: 'literature/:id',
+    component: ContentComponent
   }
 ];
