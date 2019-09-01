@@ -16,11 +16,20 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .fa-facebook {
   color: #3b5998;
 }
+.fa-facebook:hover {
+  filter: brightness(150%);
+}
 
 .fa-linkedin {
   color: #0976b4;
 }
+.fa-linkedin:hover {
+  filter: brightness(150%);
+}
 
 .fa-github {
   color: #333;
+}
+.fa-github:hover {
+  filter: brightness(200%);
 }
