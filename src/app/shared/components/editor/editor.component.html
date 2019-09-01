@@ -22,7 +22,7 @@
     </mat-form-field>
     <ckeditor [editor]="editor" [config]="config" (ready)="onReady($event)" formControlName="body"></ckeditor>
   </form>
-  <div class="text-right" style="margin: 20px">
+  <div class="text-right m-3">
     <button type="button" class="btn btn-success" [disabled]="textEditorForm.invalid" (click)="post()">SAVE</button>
   </div>
 </div>

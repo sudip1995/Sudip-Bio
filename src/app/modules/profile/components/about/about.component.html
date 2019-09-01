@@ -6,29 +6,30 @@
     <p>January 2019 - Present</p>
   </div>
   <div class="d-flex justify-content-center">
-    <ul style="list-style-type: disc">
-      <li>Developed robust and highly functional UI for SPA using Angular 6 and higher</li>
+    <ul>
+      <li>Developed highly functional UI for SPA using Angular 6 and higher</li>
       <li>Used NgRx Store for State Management and RxJs for reactive programming</li>
       <li>Developed RESTful APIs in a Microservice Architecture using ASP .NET Core</li>
       <li>Designed and developed reusable UI packages using Angular and published in npm registry</li>
       <li>Comfortable with JIRA based project management, issue tracking and product releases</li>
-      <li>Accustomed to AGILE methodologies</li>
+      <li>Accustomed to Agile methodologies</li>
     </ul>
   </div>
   <h3>Other Experiences</h3>
   <h5 class="text-center">Portfolio Website</h5>
   <div class="row d-flex justify-content-center">
-    <ul style="list-style-type: disc">
+    <ul>
       <li>Used MEAN Stack (MongoDB, Express, Angular, Node) for developing this website</li>
       <li>Password encryption during registration and authentication of user credentials using bcrypt</li>
       <li>Used passport and JWT Token for authenticating API calls and using auth-guard for client routes</li>
+      <li>Designed the website with Bootstrap 4</li>
       <li>Used Heroku for deploying the app</li>
     </ul>
   </div>
   <h3>Skills</h3>
   <div *ngFor="let skill of skills">
     <div class="progress" style="margin: 20px; height: 25px">
-      <div class="progress-bar w-{{skill.level}} h-auto" style="font-size: 15px" role="progressbar" attr.aria-valuenow="{{skill.level}}" aria-valuemin="0" aria-valuemax="100">{{skill.title | uppercase}}</div>
+      <div class="progress-bar h-auto" [ngStyle]="{'width': skill.level}" style="font-size: 15px" role="progressbar" attr.aria-valuenow="{{skill.level}}" aria-valuemin="0" aria-valuemax="100">{{skill.title | uppercase}}</div>
     </div>
   </div>
   <h3>Tools I Use</h3>
@@ -43,7 +44,7 @@
   <h3>Online Judge Profiles</h3>
   <div class="row d-flex justify-content-center">
     <div *ngFor="let oj of ojs">
-      <div class="shadow card" style="min-width: 230px; margin: 10px">
+      <div class="shadow card">
         <a href="{{oj.link}}" target="_blank">
           <img src="assets/images/icons/{{oj.imgSrc}}.png" class="card-img-top" alt="{{oj.title}}">
         </a>
@@ -57,7 +58,7 @@
   <h3>National Onsite Contests</h3>
   <div class="row d-flex justify-content-center">
     <div *ngFor="let contest of contests">
-      <div class="shadow card text-white bg-info" style="min-width: 230px; margin: 10px">
+      <div class="shadow card text-white bg-info">
         <div class="card-header">{{contest.title | uppercase}}</div>
         <div class="card-body">
           <h5 class="card-title">Team Name: {{contest.team}}</h5>
@@ -70,7 +71,7 @@
   <h3>Personal Projects</h3>
   <div class="row d-flex justify-content-center">
     <div *ngFor="let project of githubRepos$ | async">
-      <div *ngIf="!project.fork" class="shadow card" style="min-width: 230px; margin: 10px">
+      <div *ngIf="!project.fork" class="shadow card">
         <div class="card-header">
           <strong><a href="{{project.html_url}}" target="_blank">{{project.name}}</a></strong>
           <sup>{{project.language}}</sup>

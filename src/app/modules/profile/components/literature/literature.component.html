@@ -8,7 +8,7 @@
     </li>
   </ul>
   <div class="d-flex justify-content-center">
-    <div *ngIf="isDataLoading" class="spinner-border" style="width: 5rem; height: 5rem" role="status">
+    <div id="spinner" *ngIf="isDataLoading" class="spinner-border" role="status">
       <span class="sr-only">Loading...</span>
     </div>
   </div>
@@ -27,7 +27,7 @@
         </div>
       </div>
       <div *ngIf="lastShownLiterature < literatures?.length-1" class="clearfix">
-        <button class="btn btn-primary float-right" style="margin-bottom: 40px" (click)="olderPosts()">Older Posts &rarr;</button>
+        <button class="btn btn-primary float-right mb-2" (click)="olderPosts()">Older Posts &rarr;</button>
       </div>
     </div>
   </div>

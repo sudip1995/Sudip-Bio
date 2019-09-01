@@ -9,7 +9,7 @@ import {Observable} from 'rxjs';
 })
 export class AboutComponent implements OnInit {
 
-  skills: {title: string, level: number}[] = [];
+  skills: {title: string, level: string}[] = [];
   tools: {title: string, imgSrc: string}[] = [];
   ojs: {title: string, description: string, imgSrc: string, link: string}[] = [];
   contests: {title: string, team: string, ranking: number, year: number}[] = [];
@@ -27,16 +27,16 @@ export class AboutComponent implements OnInit {
   }
 
   private addSkills() {
-    this.skills.push({title: 'JavaScript', level: 70});
-    this.skills.push({title: 'Angular', level: 80});
-    this.skills.push({title: 'Redux', level: 80});
-    this.skills.push({title: 'RxJS', level: 50});
-    this.skills.push({title: 'ASP.NET Core', level: 40});
-    this.skills.push({title: 'Node.js', level: 50});
-    this.skills.push({title: 'Express', level: 50});
-    this.skills.push({title: 'MongoDB', level: 30});
-    this.skills.push({title: 'Problem Solving', level: 90});
-    this.skills.push({title: 'C++', level: 80});
+    this.skills.push({title: 'JavaScript', level: '70%'});
+    this.skills.push({title: 'Angular', level: '80%'});
+    this.skills.push({title: 'Redux', level: '80%'});
+    this.skills.push({title: 'RxJS', level: '50%'});
+    this.skills.push({title: 'ASP.NET Core', level: '40%'});
+    this.skills.push({title: 'Node.js', level: '50%'});
+    this.skills.push({title: 'Express', level: '50%'});
+    this.skills.push({title: 'MongoDB', level: '30%'});
+    this.skills.push({title: 'Problem Solving', level: '90%'});
+    this.skills.push({title: 'C++', level: '80%'});
   }
 
   private addTools() {
