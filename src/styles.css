@@ -48,3 +48,8 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   position: absolute;
   margin: auto;
 }
+
+figure {
+  display: flex;
+  justify-content: center;
+}
