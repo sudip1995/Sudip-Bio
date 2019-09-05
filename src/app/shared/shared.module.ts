@@ -17,13 +17,16 @@ import {CKEditorModule} from '@ckeditor/ckeditor5-angular';
 import { EditorComponent } from './components/editor/editor.component';
 import {SanitizeHtmlPipe} from './pipes/sanitize-Html';
 import {OembedPipe} from './pipes/oembed.pipe';
+import {NgxSpinnerModule} from 'ngx-spinner';
+import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
 
 
 @NgModule({
   declarations: [
     EditorComponent,
     SanitizeHtmlPipe,
-    OembedPipe
+    OembedPipe,
+    LoadingSpinnerComponent
   ],
   imports: [
     CommonModule,
@@ -32,7 +35,8 @@ import {OembedPipe} from './pipes/oembed.pipe';
     MatInputModule,
     MatFormFieldModule,
     MatDatepickerModule,
-    MatSelectModule
+    MatSelectModule,
+    NgxSpinnerModule
   ],
   exports: [
     CommonModule,
@@ -48,13 +52,14 @@ import {OembedPipe} from './pipes/oembed.pipe';
     MatButtonModule,
     MatSnackBarModule,
     MatSelectModule,
-
+    NgxSpinnerModule,
     // Components
     EditorComponent,
 
     // Pipes
     SanitizeHtmlPipe,
-    OembedPipe
+    OembedPipe,
+    LoadingSpinnerComponent
   ]
 })
 export class SharedModule { }

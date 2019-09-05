@@ -1,10 +1,6 @@
+<app-loading-spinner></app-loading-spinner>
 <div class="container body-padding">
   <h1 id="page-title">Programming Blog</h1>
-  <div class="d-flex justify-content-center">
-    <div id="spinner" *ngIf="isDataLoading" class="spinner-border" role="status">
-      <span class="sr-only">Loading...</span>
-    </div>
-  </div>
   <div class="row">
     <div class="col-lg-8 col-md-10 mx-3">
       <div *ngFor="let blog of blogs; let i=index;">

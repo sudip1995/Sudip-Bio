@@ -5,6 +5,7 @@ import {ContentService} from '../../../../shared/services/content.service';
 import {ActivatedRoute} from '@angular/router';
 import {takeUntil} from 'rxjs/operators';
 import {Subject} from 'rxjs';
+import {NgxSpinnerService} from 'ngx-spinner';
 
 @Component({
   selector: 'app-content',
@@ -12,18 +13,19 @@ import {Subject} from 'rxjs';
   styleUrls: ['./content.component.scss']
 })
 export class ContentComponent implements OnInit, OnDestroy {
-  isDataLoading: boolean;
   newContent = new ContentModel();
 
   unSubscribe$ = new Subject();
   constructor(private contentService: ContentService,
-              private activatedRoute: ActivatedRoute) { }
+              private activatedRoute: ActivatedRoute,
+              private ngxSpinnerService: NgxSpinnerService) { }
 
   ngOnInit() {
-    this.isDataLoading = true;
+    this.ngxSpinnerService.show();
     this.activatedRoute.params.pipe(takeUntil(this.unSubscribe$)).subscribe(param => {
       if (param && param.id) {
         this.contentService.getContentById(SharedConfig.getContentByIdApi(param.id)).subscribe(res => {
+          this.ngxSpinnerService.hide();
           if (res) {
             this.newContent._id = res._id;
             this.newContent.title = res.title;
@@ -36,7 +38,6 @@ export class ContentComponent implements OnInit, OnDestroy {
             this.newContent.isPosted = res.isPosted;
             this.newContent.meta = res.meta;
           }
-          this.isDataLoading = false;
         });
       }
     });

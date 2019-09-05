@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {UserService} from '../../services/user.service';
 import {Router} from '@angular/router';
+import {NgxSpinnerService} from 'ngx-spinner';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +16,8 @@ export class LoginComponent implements OnInit {
   showAlert: boolean;
   constructor(private formBuilder: FormBuilder,
               private userService: UserService,
-              private router: Router) {
+              private router: Router,
+              private ngxSpinnerService: NgxSpinnerService) {
     this.loginFormErrors = {
       email: {},
       password: {}
@@ -37,7 +39,9 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
+    this.ngxSpinnerService.show();
     this.userService.authenticateUser(this.loginForm.value).subscribe(res => {
+      this.ngxSpinnerService.hide();
       if (res && res.success) {
         this.showAlert = false;
         this.userService.storeUserData(res.token, res.user);

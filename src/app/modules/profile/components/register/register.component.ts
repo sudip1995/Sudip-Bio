@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {UserModel} from '../../models/profile.model';
 import {Router} from '@angular/router';
 import {UserService} from '../../services/user.service';
+import {NgxSpinnerService} from 'ngx-spinner';
 
 @Component({
   selector: 'app-register',
@@ -15,7 +16,8 @@ export class RegisterComponent implements OnInit {
   showAlert: boolean;
   constructor(private formBuilder: FormBuilder,
               private userService: UserService,
-              private router: Router) {
+              private router: Router,
+              private ngxSpinnerService: NgxSpinnerService) {
     this.registrationFormErrors = {
       firstName: {},
       lastName: {},
@@ -41,7 +43,9 @@ export class RegisterComponent implements OnInit {
     user.password = this.registrationForm.get('password').value;
     user.gender = this.registrationForm.get('gender').value;
     user.dateOfBirth = this.registrationForm.get('dateOfBirth').value;
+    this.ngxSpinnerService.show();
     this.userService.registerUser(user).subscribe(res => {
+      this.ngxSpinnerService.hide();
       if (res && res.success) {
         this.showAlert = false;
         this.router.navigateByUrl('/login');

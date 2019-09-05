@@ -5,6 +5,7 @@ import {ContentModel} from '../../../../shared/models/shared.model';
 import {SharedConfig} from '../../../../shared/config/shared.config';
 import {Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
+import {NgxSpinnerService} from 'ngx-spinner';
 
 @Component({
   selector: 'app-blog',
@@ -17,15 +18,16 @@ export class BlogComponent implements OnInit, OnDestroy {
   blogs: any[] = [];
   blog: ContentModel = new ContentModel();
   lastShownBlog: number;
-  isDataLoading: boolean;
 
   unSubscribe$ = new Subject();
-  constructor(public contentService: ContentService) { }
+  constructor(public contentService: ContentService,
+              private ngxSpinnerService: NgxSpinnerService) { }
 
   ngOnInit() {
-    this.isDataLoading = true;
+    this.ngxSpinnerService.show();
     this.lastShownBlog = 4;
     this.contentService.getAllContent(SharedConfig.getAllContentApi('blog')).pipe(takeUntil(this.unSubscribe$)).subscribe(res => {
+      this.ngxSpinnerService.hide();
       res.forEach(r => {
         const newBlog = new ContentModel();
         newBlog._id = r._id;
@@ -40,7 +42,6 @@ export class BlogComponent implements OnInit, OnDestroy {
         newBlog.meta = r.meta;
         this.blogs.push(newBlog);
       });
-      this.isDataLoading = false;
     });
   }
 

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {MailService} from '../../services/mail.service';
 import {MatSnackBar} from '@angular/material';
+import {NgxSpinnerService} from 'ngx-spinner';
 
 @Component({
   selector: 'app-contact',
@@ -14,7 +15,8 @@ export class ContactComponent implements OnInit {
   contactFormErrors: any;
   constructor(private formBuilder: FormBuilder,
               private mailService: MailService,
-              private snackBar: MatSnackBar) {}
+              private snackBar: MatSnackBar,
+              private ngxSpinnerService: NgxSpinnerService) {}
 
   ngOnInit() {
     this.createContactForm();
@@ -30,8 +32,9 @@ export class ContactComponent implements OnInit {
   }
 
   sendMessage() {
+    this.ngxSpinnerService.show();
     this.mailService.sendMail(this.contactForm.value).subscribe(res => {
-      console.log(res);
+      this.ngxSpinnerService.hide();
       if (res && res.success) {
         this.snackBar.open('Message Sent!', 'Dismiss',  {
           duration: 2000

@@ -1,3 +1,4 @@
+<app-loading-spinner></app-loading-spinner>
 <div class="container body-padding">
   <ul class="nav nav-tabs">
     <li class="nav-item">
@@ -7,11 +8,6 @@
       <a class="nav-link" [ngClass]="{'active': literatureType=='story'}" (click)="onClick('story')">Story</a>
     </li>
   </ul>
-  <div class="d-flex justify-content-center">
-    <div id="spinner" *ngIf="isDataLoading" class="spinner-border" role="status">
-      <span class="sr-only">Loading...</span>
-    </div>
-  </div>
   <div class="row">
     <div class="col-lg-8 col-md-10 mx-3">
       <div *ngFor="let literatures of literatures; let i=index;">

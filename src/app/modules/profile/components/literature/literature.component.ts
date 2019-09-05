@@ -5,6 +5,7 @@ import {SharedConfig} from '../../../../shared/config/shared.config';
 import {ActivatedRoute, Router} from '@angular/router';
 import {takeUntil} from 'rxjs/operators';
 import {Subject} from 'rxjs';
+import {NgxSpinnerService} from 'ngx-spinner';
 
 @Component({
   selector: 'app-literature',
@@ -18,13 +19,13 @@ export class LiteratureComponent implements OnInit, OnDestroy {
   literature: ContentModel = new ContentModel();
   lastShownLiterature: number;
   literatureType: string;
-  isDataLoading: boolean;
 
   unSubscribe$ = new Subject();
 
   constructor(public contentService: ContentService,
               private router: Router,
-              private activatedRoute: ActivatedRoute) { }
+              private activatedRoute: ActivatedRoute,
+              private ngxSpinnerService: NgxSpinnerService) { }
   ngOnInit() {
     this.literatureType = 'poem';
     this.lastShownLiterature = 4;
@@ -49,10 +50,11 @@ export class LiteratureComponent implements OnInit, OnDestroy {
   }
 
   private loadLiteratureData() {
-    this.isDataLoading = true;
+    this.ngxSpinnerService.show();
     this.literatures = [];
     this.contentService.getAllContent(SharedConfig.getAllContentApi(this.literatureType)).pipe(takeUntil(this.unSubscribe$))
       .subscribe(res => {
+        this.ngxSpinnerService.hide();
         res.forEach(r => {
           const newLiterature = new ContentModel();
           newLiterature._id = r._id;
@@ -66,7 +68,6 @@ export class LiteratureComponent implements OnInit, OnDestroy {
           newLiterature.isPosted = r.isPosted;
           newLiterature.meta = r.meta;
           this.literatures.push(newLiterature);
-          this.isDataLoading = false;
         });
       });
   }

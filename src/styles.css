@@ -34,21 +34,6 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   filter: brightness(200%);
 }
 
-.app-loading {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-}
-.app-loading .spinner-border {
-  height: 100px;
-  width: 100px;
-  position: absolute;
-  margin: auto;
-}
-
 figure {
   display: flex;
   justify-content: center;
