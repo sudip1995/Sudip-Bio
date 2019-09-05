@@ -38,3 +38,21 @@ figure {
   display: flex;
   justify-content: center;
 }
+
+.app-loading {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  background: rgba(51,51,51,0.8);
+}
+.app-loading .spinner-border {
+  height: 96px;
+  width: 96px;
+  position: absolute;
+  margin: auto;
+  color: #fff;
+  border-width: 6px;
+}
