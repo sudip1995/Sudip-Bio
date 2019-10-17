@@ -31,6 +31,7 @@
     "@ckeditor/ckeditor5-angular": "^1.1.0",
     "@ckeditor/ckeditor5-build-decoupled-document": "^12.4.0",
     "@ngrx/store": "^8.2.0",
+    "compression": "^1.7.4",
     "express": "^4.17.1",
     "ngx-cookie-service": "^2.2.0",
     "ngx-spinner": "^8.0.3",
